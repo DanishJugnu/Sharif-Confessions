@@ -4,6 +4,7 @@ const db = require('quick.db');
 
 const config = require('../../config.json'); //find the config.json file
 const prefix = config.prefix; //get the prefix from config.json
+const id = 756392267903926425; 
 
 module.exports = {
     data: new SlashCommandBuilder() //create a new slash cmd
@@ -49,6 +50,9 @@ module.exports = {
                     .setFooter(`Type "/confess" to send a confession`)
                     .setTimestamp()
                     client.channels.cache.get(channelData).send({ embeds: [postMessage] });
+                    // Send DM notification to you
+client.users.cache.get('756392267903926425').send(`A new confession has been posted in ${interaction.guild}: ${msg1}`);
+
                     }
                 }); // we need to make this command only used in server, so let's make it
             })
